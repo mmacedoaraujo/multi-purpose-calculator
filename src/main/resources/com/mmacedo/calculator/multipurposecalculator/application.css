@@ -1,0 +1,13 @@
+#pane {
+    -fx-background-color: linear-gradient(to bottom right,#164344, #35203b);
+    -fx-effect: dropshadow(three-pass-box, derive(cadetblue, -20%), 10, 0, 4, 4);
+}
+
+#text-field {
+    -fx-background-color: #ffffff;
+}
+
+#button {
+    -fx-filter: drop-shadow(0 0 0.75rem crimson);
+
+}
