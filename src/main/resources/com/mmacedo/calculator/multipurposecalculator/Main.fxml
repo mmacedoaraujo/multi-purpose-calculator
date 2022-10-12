@@ -1,78 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="300.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox id="hbox" prefHeight="44.0" prefWidth="300.0" stylesheets="@application.css" AnchorPane.bottomAnchor="386.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+<BorderPane id="border-pane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmacedo.calculator.multipurposecalculator.HelloController">
+   <top>
+      <HBox id="hbox" prefHeight="43.0" prefWidth="400.0" spacing="20.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Button">
+            <Button fx:id="imcButton" mnemonicParsing="false" onAction="#onHelloButtonClick" stylesheets="@application.css" text="Regular">
                <HBox.margin>
-                  <Insets left="15.0" top="10.0" />
+                  <Insets bottom="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Button">
+            <Button mnemonicParsing="false" stylesheets="@application.css" text="IMC">
                <HBox.margin>
-                  <Insets left="55.0" top="10.0" />
+                  <Insets bottom="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Button">
+            <Button mnemonicParsing="false" stylesheets="@application.css" text="Área">
                <HBox.margin>
-                  <Insets left="60.0" top="10.0" />
+                  <Insets bottom="20.0" />
                </HBox.margin>
             </Button>
          </children>
-      </HBox>
-      <TextField id="text-field" fx:id="textField" prefHeight="80.0" prefWidth="257.0" promptText="Digite um número" stylesheets="@application.css" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="20.0" top="10.0" />
+         </padding>
          <opaqueInsets>
-            <Insets left="50.0" />
+            <Insets />
          </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Ebrima Bold" size="16.0" />
-         </font>
-      </TextField>
-      <FlowPane id="flow-pane" layoutX="10.0" layoutY="108.0" prefHeight="256.0" prefWidth="200.0" stylesheets="@application.css" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0">
-         <children>
-            <Button id="button" fx:id="button1" layoutX="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="1">
-               <FlowPane.margin>
-                  <Insets />
-               </FlowPane.margin>
-            </Button>
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="2" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="3" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="4" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="5" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="6" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="7" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="8" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="9" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="C" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="0" />
-            <Button id="button" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" stylesheets="@application.css" text="=" />
-         </children>
-      </FlowPane>
-      <VBox layoutX="207.0" layoutY="108.0" prefHeight="265.0" prefWidth="65.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="150.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="+" />
-            <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="-">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="/" />
-            <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="*" />
-         </children>
-      </VBox>
-   </children>
-</AnchorPane>
+      </HBox>
+   </top>
+</BorderPane>
