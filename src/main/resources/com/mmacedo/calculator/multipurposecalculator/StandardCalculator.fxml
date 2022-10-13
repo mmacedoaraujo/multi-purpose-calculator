@@ -78,9 +78,13 @@
                   <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="=" />
                </children>
             </FlowPane>
-            <Label id="lblResult" fx:id="lblResult" layoutX="320.0" layoutY="126.0" textFill="WHITE" translateX="-60.0" translateY="-10.0" AnchorPane.rightAnchor="0.0" />
-            <Label id="lblResult" fx:id="lblSaved" layoutX="330.0" layoutY="136.0" textFill="WHITE" translateX="20.0" translateY="-100.0" AnchorPane.leftAnchor="0.0" />
-            <ImageView fitHeight="21.0" fitWidth="27.0" layoutX="173.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" AnchorPane.rightAnchor="0.0" />
+            <Label id="lblResult" fx:id="lblResult" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="320.0" layoutY="126.0" textFill="WHITE" translateX="-80.0" translateY="-10.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" />
+            <Label id="lblResult" fx:id="lblSaved" layoutX="330.0" layoutY="136.0" prefHeight="24.0" prefWidth="335.0" textFill="WHITE" translateX="20.0" translateY="-100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="65.0" />
+            <ImageView fx:id="eraseImgView" fitHeight="21.0" fitWidth="27.0" layoutX="388.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" translateX="-45.0" translateY="-12.0" AnchorPane.rightAnchor="0.0">
+               <image>
+                  <Image url="@../../../../images/back.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>

@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainWindowController {
     @FXML
@@ -69,8 +71,10 @@ public class MainWindowController {
 
     @FXML
     void onBtnClearClicked(ActionEvent event) {
+        savedNumber = "";
         currentNumber = "";
         lblResult.setText("");
+        lblSaved.setText("");
     }
 
     @FXML
@@ -81,10 +85,15 @@ public class MainWindowController {
 
     @FXML
     void onSymbolClicked(MouseEvent event) {
-        String newNumber = String.format("%s %s ", currentNumber, ((Button)event.getSource()).getText());
-        savedNumber += newNumber;
-        currentNumber = "";
-        lblSaved.setText(savedNumber);
+        String newNumber = String.format("%s %s ", currentNumber, ((Button) event.getSource()).getText());
+        Pattern pattern = Pattern.compile("[\\d]");
+        Matcher matcher = pattern.matcher(newNumber);
+        Boolean matchFound = matcher.find();
+        if (matchFound) {
+            savedNumber += newNumber;
+            currentNumber = "";
+            lblSaved.setText(savedNumber);
+        }
     }
 
     public void updateLabelResult() {
