@@ -22,14 +22,6 @@
     -fx-text-fill: rgb(255, 255, 255);
 }
 
-.button:focused {
-    -fx-border-color: transparent, ;
-    -fx-border-width: 1, 1;
-    -fx-border-style: solid, segments(1, 2);
-    -fx-border-radius: 0, 0;
-    -fx-border-insets: 1 1 1 1, 0;
-}
-
 .button:pressed {
     -fx-background-color: rgba(255, 255, 255, 0.384);
     -fx-text-fill: rgb(255, 255, 255);
@@ -47,4 +39,10 @@
         -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
         -fx-font-size: 20px; /* 12 */
         -fx-text-fill: #c2c2c2;
+ }
+
+ #lblResult {
+      -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+      -fx-font-size: 20px; /* 12 */
+
  }
