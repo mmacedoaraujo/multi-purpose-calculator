@@ -22,6 +22,8 @@ public class MainWindowController {
     @FXML
     private Label lblResult;
     @FXML
+    private Label lblSaved;
+    @FXML
     private Button standardCalculatorButton;
 
     @FXML
@@ -35,10 +37,9 @@ public class MainWindowController {
 
     @FXML
     private ImageView btnClose;
-
     private String firstNumber = "";
-
     private String currentNumber = "";
+    private String savedNumber = "";
     private double x, y;
 
     public void init(Stage stage) {
@@ -78,9 +79,12 @@ public class MainWindowController {
         addNumber(firstNumber);
     }
 
-
+    @FXML
     void onSymbolClicked(MouseEvent event) {
-        addSymbol(((Button) event.getSource()).getText());
+        String newNumber = String.format("%s %s ", currentNumber, ((Button)event.getSource()).getText());
+        savedNumber += newNumber;
+        currentNumber = "";
+        lblSaved.setText(savedNumber);
     }
 
     public void updateLabelResult() {
@@ -90,10 +94,6 @@ public class MainWindowController {
     public void addNumber(String number) {
         currentNumber += number;
         updateLabelResult();
-    }
-
-    private void addSymbol(String text) {
-
     }
 
 }

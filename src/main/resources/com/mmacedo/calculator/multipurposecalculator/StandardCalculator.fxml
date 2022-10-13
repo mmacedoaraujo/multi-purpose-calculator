@@ -56,10 +56,10 @@
          <children>
             <FlowPane layoutY="178.0" prefHeight="364.0" prefWidth="90.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="+" />
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="-" />
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="*" />
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="/" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="+" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="-" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="*" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="/" />
                </children>
             </FlowPane>
             <FlowPane prefHeight="392.0" prefWidth="275.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="150.0">
@@ -78,7 +78,9 @@
                   <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="=" />
                </children>
             </FlowPane>
-            <Label id="lblResult" fx:id="lblResult" layoutX="320.0" layoutY="126.0" textFill="WHITE" translateX="10.0" translateY="-10.0" AnchorPane.rightAnchor="55.0" />
+            <Label id="lblResult" fx:id="lblResult" layoutX="320.0" layoutY="126.0" textFill="WHITE" translateX="-60.0" translateY="-10.0" AnchorPane.rightAnchor="0.0" />
+            <Label id="lblResult" fx:id="lblSaved" layoutX="330.0" layoutY="136.0" textFill="WHITE" translateX="20.0" translateY="-100.0" AnchorPane.leftAnchor="0.0" />
+            <ImageView fitHeight="21.0" fitWidth="27.0" layoutX="173.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" translateX="-30.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </center>
