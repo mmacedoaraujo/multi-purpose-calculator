@@ -6,11 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class SceneController {
+public class MainWindowController {
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -23,6 +24,18 @@ public class SceneController {
 
     @FXML
     private Button bmiCalculatorButton;
+    private double x, y;
+
+    public void init(Stage stage) {
+        borderPane.setOnMousePressed(mouseEvent -> {
+            x = mouseEvent.getSceneX();
+            y = mouseEvent.getSceneY();
+        });
+        borderPane.setOnMouseDragged(mouseEvent -> {
+            stage.setX(mouseEvent.getScreenX()-x);
+            stage.setY(mouseEvent.getScreenY()-y);
+        });
+    }
 
     @FXML
     protected void onStandardCalculatorButtonButtonClick() throws IOException {

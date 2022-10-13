@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.mmacedo.calculator.multipurposecalculator/com.mmacedo.calculator.multipurposecalculator.Application
+                                com.mmacedo.calculator.multipurposecalculator/com.mmacedo.calculator.multipurposecalculator.CalculatorAPP
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
