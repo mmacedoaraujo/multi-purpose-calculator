@@ -29,12 +29,12 @@
                   <Insets top="20.0" />
                </HBox.margin>
             </Button>
-            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" translateX="75.0" translateY="2.0">
+            <ImageView fx:id="btnClose" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" translateX="75.0" translateY="2.0">
                <image>
                   <Image url="@../../../../images/close.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="6.0">
+            <ImageView fx:id="btnMinimize" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="6.0">
                <image>
                   <Image url="@../../../../images/minimize-sign.png" />
                </image>
