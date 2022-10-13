@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane id="border-pane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmacedo.calculator.multipurposecalculator.SceneController">
+   <top>
+      <HBox id="hbox" prefHeight="43.0" prefWidth="400.0" spacing="20.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="standardCalculatorButton" mnemonicParsing="false" onAction="#onStandardCalculatorButtonButtonClick" stylesheets="@application.css" text="Padrão">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="bmiCalculatorButton" mnemonicParsing="false" onAction="#onBmiCalculatorButtonButtonClick" stylesheets="@application.css" text="IMC">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="areaCalculatorButton" mnemonicParsing="false" stylesheets="@application.css" text="Área">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="20.0" top="10.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane fx:id="rootPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <FlowPane layoutY="178.0" prefHeight="364.0" prefWidth="90.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="+" />
+                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="-" />
+                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="*" />
+                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="/" />
+               </children>
+            </FlowPane>
+            <FlowPane prefHeight="392.0" prefWidth="275.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="150.0">
+               <children>
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="1" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="2" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="3" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="4" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="5" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="6" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="7" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="8" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="9" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="C" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="0" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="=" />
+               </children>
+            </FlowPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,5 +1,5 @@
 #border-pane {
-    -fx-background-color: linear-gradient(to bottom,#000000, transparent);
+    -fx-background-color: linear-gradient(to bottom,#000000, #cea568);
     -fx-effect: dropshadow(three-pass-box, derive(cadetblue, -20%), 10, 0, 4, 4);
 }
 
@@ -13,7 +13,7 @@
 }
 
 .button{
-    -fx-border-color: transparent;
+    -fx-border-color: transparent, rgb(255, 255, 255);
     -fx-border-width: 0;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
@@ -21,9 +21,14 @@
     -fx-font-size: 20px; /* 12 */
     -fx-text-fill: #c2c2c2;
 }
+.button:hover {
+    -fx-box-shadow: inset 0px 0px 40px 40px #DBA632;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: rgb(255, 255, 255);
+}
 
 .button:focused {
-    -fx-border-color: transparent, black;
+    -fx-border-color: transparent, ;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 2);
     -fx-border-radius: 0, 0;
@@ -31,11 +36,11 @@
 }
 
 .button:pressed {
-    -fx-background-color: black;
-    -fx-text-fill: rgb(59, 59, 59);
+    -fx-background-color: rgba(255, 255, 255, 0.384);
+    -fx-text-fill: rgb(255, 255, 255);
 }
 
 .button:active {
- -fx-text-fill: rgb(59, 59, 59);
+    -fx-text-fill: rgb(59, 59, 59);
 
  }
