@@ -75,11 +75,11 @@
                   <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="3" />
                   <Button id="calculatorButtons" fx:id="btnClear" mnemonicParsing="false" onAction="#onBtnClearClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="C" />
                   <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="0" textFill="WHITE" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="=" />
+                  <Button id="calculatorButtons" fx:id="btnEqual" mnemonicParsing="false" onMouseClicked="#onEqualClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="=" />
                </children>
             </FlowPane>
             <Label id="lblResult" fx:id="lblResult" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="320.0" layoutY="126.0" textFill="WHITE" translateX="-80.0" translateY="-10.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" />
-            <Label id="lblResult" fx:id="lblSaved" layoutX="330.0" layoutY="136.0" prefHeight="24.0" prefWidth="335.0" textFill="WHITE" translateX="20.0" translateY="-100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="65.0" />
+            <Label id="lblResult" fx:id="lblSaved" alignment="CENTER_RIGHT" layoutX="330.0" layoutY="136.0" prefHeight="24.0" prefWidth="304.0" textFill="WHITE" translateX="-80.0" translateY="-100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" />
             <ImageView fx:id="eraseImgView" fitHeight="21.0" fitWidth="27.0" layoutX="388.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" translateX="-45.0" translateY="-12.0" AnchorPane.rightAnchor="0.0">
                <image>
                   <Image url="@../../../../images/back.png" />

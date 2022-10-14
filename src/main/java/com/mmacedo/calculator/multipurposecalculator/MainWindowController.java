@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,7 +31,8 @@ public class MainWindowController {
 
     @FXML
     private Button bmiCalculatorButton;
-
+    @FXML
+    private Button btnEqual;
     @FXML
     private Button btnClear;
 
@@ -85,15 +87,44 @@ public class MainWindowController {
 
     @FXML
     void onSymbolClicked(MouseEvent event) {
-        String newNumber = String.format("%s %s ", currentNumber, ((Button) event.getSource()).getText());
+        String newNumber = String.format("%s%s", currentNumber, ((Button) event.getSource()).getText());
         Pattern pattern = Pattern.compile("[\\d]");
         Matcher matcher = pattern.matcher(newNumber);
         Boolean matchFound = matcher.find();
+
         if (matchFound) {
             savedNumber += newNumber;
             currentNumber = "";
+            lblResult.setText("");
             lblSaved.setText(savedNumber);
         }
+
+    }
+
+    @FXML
+    void onEqualClicked(MouseEvent event) {
+        double savedNumberConverted = Double.parseDouble(savedNumber.replaceAll("\\D", ""));
+        double currentNumberConverted = Double.parseDouble(currentNumber.replaceAll("\\D", ""));
+        String savedResult = savedNumber.substring(0, savedNumber.length()) + currentNumber + "=";
+        lblSaved.setText(savedResult);
+        if (savedResult.contains("+")) {
+            int result = (int) savedNumberConverted + (int) currentNumberConverted;
+            lblResult.setText(String.format("%s", result));
+            currentNumber = "";
+        } else if (savedResult.contains("-")) {
+            int result = (int) savedNumberConverted - (int) currentNumberConverted;
+            lblResult.setText(String.format("%s", result));
+            currentNumber = "";
+        } else if (savedResult.contains("/")) {
+            double result = savedNumberConverted / currentNumberConverted;
+            lblResult.setText(String.format("%s", result));
+            currentNumber = "";
+        } else if (savedResult.contains("*")) {
+            double result = (int) savedNumberConverted * (int) currentNumberConverted;
+            lblResult.setText(String.format("%s", result));
+            currentNumber = "";
+        }
+
     }
 
     public void updateLabelResult() {
