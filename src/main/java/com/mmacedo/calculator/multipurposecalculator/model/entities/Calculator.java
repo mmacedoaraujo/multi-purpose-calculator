@@ -2,49 +2,41 @@ package com.mmacedo.calculator.multipurposecalculator.model.entities;
 
 public class Calculator {
 
-    private Double firstNumber;
-    private Double currentNumber;
-    private Double savedNumber;
+    private Integer firstNumber;
+    private Integer currentNumber;
+    private Integer savedNumber;
 
     public Calculator() {
     }
 
-    public Calculator(Double firstNumber, Double currentNumber, Double savedNumber) {
+    public Calculator(Integer firstNumber, Integer currentNumber, Integer savedNumber) {
         this.firstNumber = firstNumber;
         this.currentNumber = currentNumber;
         this.savedNumber = savedNumber;
     }
 
-    public Double getFirstNumber() {
+    public Integer getFirstNumber() {
         return firstNumber;
     }
 
-    public void setFirstNumber(Double firstNumber) {
+    public void setFirstNumber(Integer firstNumber) {
         this.firstNumber = firstNumber;
     }
 
-    public Double getCurrentNumber() {
+    public Integer getCurrentNumber() {
         return currentNumber;
     }
 
-    public void setCurrentNumber(Double currentNumber) {
+    public void setCurrentNumber(Integer currentNumber) {
         this.currentNumber = currentNumber;
     }
 
-    public Double getSavedNumber() {
+    public Integer getSavedNumber() {
         return savedNumber;
     }
 
-    public void setSavedNumber(Double savedNumber) {
+    public void setSavedNumber(Integer savedNumber) {
         this.savedNumber = savedNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Calculator{" +
-                "firstNumber=" + firstNumber +
-                ", currentNumber=" + currentNumber +
-                ", savedNumber=" + savedNumber +
-                '}';
-    }
 }

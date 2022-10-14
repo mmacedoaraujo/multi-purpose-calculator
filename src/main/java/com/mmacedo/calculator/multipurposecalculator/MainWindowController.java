@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,6 +45,7 @@ public class MainWindowController {
     private String firstNumber = "";
     private String currentNumber = "";
     private String savedNumber = "";
+    private String operationsHistory = "";
     private double x, y;
 
     public void init(Stage stage) {
@@ -96,34 +98,19 @@ public class MainWindowController {
             savedNumber += newNumber;
             currentNumber = "";
             lblResult.setText("");
-            lblSaved.setText(savedNumber);
+            lblSaved.setText(savedNumber.replaceAll("^0+", ""));
         }
 
     }
 
     @FXML
     void onEqualClicked(MouseEvent event) {
-        double savedNumberConverted = Double.parseDouble(savedNumber.replaceAll("\\D", ""));
-        double currentNumberConverted = Double.parseDouble(currentNumber.replaceAll("\\D", ""));
-        String savedResult = savedNumber.substring(0, savedNumber.length()) + currentNumber + "=";
-        lblSaved.setText(savedResult);
-        if (savedResult.contains("+")) {
-            int result = (int) savedNumberConverted + (int) currentNumberConverted;
-            lblResult.setText(String.format("%s", result));
-            currentNumber = "";
-        } else if (savedResult.contains("-")) {
-            int result = (int) savedNumberConverted - (int) currentNumberConverted;
-            lblResult.setText(String.format("%s", result));
-            currentNumber = "";
-        } else if (savedResult.contains("/")) {
-            double result = savedNumberConverted / currentNumberConverted;
-            lblResult.setText(String.format("%s", result));
-            currentNumber = "";
-        } else if (savedResult.contains("*")) {
-            double result = (int) savedNumberConverted * (int) currentNumberConverted;
-            lblResult.setText(String.format("%s", result));
-            currentNumber = "";
-        }
+        lblSaved.setText(savedNumber.substring(0, savedNumber.length()) + currentNumber + "=");
+        Integer savedNumberConverted = Integer.parseInt(savedNumber.replaceAll("\\D$", ""));
+        Integer currentNumberConverted = Integer.parseInt(currentNumber.replaceAll("\\D$", ""));
+
+        Integer result = adaptativeEqualBtnOperator("[\\+\\-\\/\\*]", savedNumber, savedNumberConverted, currentNumberConverted);
+        updateDataMethod(result);
 
     }
 
@@ -134,6 +121,37 @@ public class MainWindowController {
     public void addNumber(String number) {
         currentNumber += number;
         updateLabelResult();
+    }
+
+    public Integer adaptativeEqualBtnOperator(String pattern, String matcher, Integer a, Integer b) {
+        Matcher m = Pattern.compile(pattern).matcher(matcher);
+        Integer result = 0;
+        if (m.find()) {
+            switch (m.group().charAt(0)) {
+                case '+':
+
+                    result = a + b;
+                    break;
+                case '-':
+                    result = a - b;
+                    break;
+                case '*':
+                    result = a * b;
+                    break;
+                case '/':
+                    result = a / b;
+                    break;
+            }
+
+        }
+        return result;
+    }
+
+    public void updateDataMethod(Integer result) {
+        lblResult.setText(String.format("%d", result));
+        currentNumber = String.valueOf(result);
+        savedNumber = "";
+        lblSaved.setText("");
     }
 
 }
