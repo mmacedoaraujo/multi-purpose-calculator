@@ -1,5 +1,6 @@
 package com.mmacedo.calculator.multipurposecalculator;
 
+import com.mmacedo.calculator.multipurposecalculator.model.entities.Calculator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -89,23 +90,21 @@ public class MainWindowController {
 
     @FXML
     void onSymbolClicked(MouseEvent event) {
-        String newNumber = String.format("%s%s", currentNumber, ((Button) event.getSource()).getText());
-        Pattern pattern = Pattern.compile("[\\d]");
-        Matcher matcher = pattern.matcher(newNumber);
+        currentNumber += String.format("%s", ((Button) event.getSource()).getText());
+        Pattern pattern = Pattern.compile("(([\\-]{0,1}\\d+[\\+\\-\\/\\*]{0,1}){1}([\\-]{0,1}\\d{0}[\\+\\-\\/\\*]{1}\\d+){1}){1}");
+        Matcher matcher = pattern.matcher(currentNumber);
         Boolean matchFound = matcher.find();
 
         if (matchFound) {
-            savedNumber += newNumber;
-            currentNumber = "";
             lblResult.setText("");
-            lblSaved.setText(savedNumber.replaceAll("^0+", ""));
+            lblResult.setText(currentNumber);
         }
 
     }
 
     @FXML
     void onEqualClicked(MouseEvent event) {
-        lblSaved.setText(savedNumber.substring(0, savedNumber.length()) + currentNumber + "=");
+        lblSaved.setText(currentNumber.substring(0, savedNumber.length()) + currentNumber + "=");
         Integer savedNumberConverted = Integer.parseInt(savedNumber.replaceAll("\\D$", ""));
         Integer currentNumberConverted = Integer.parseInt(currentNumber.replaceAll("\\D$", ""));
 
@@ -124,13 +123,13 @@ public class MainWindowController {
     }
 
     public Integer adaptativeEqualBtnOperator(String pattern, String matcher, Integer a, Integer b) {
+        Calculator calculator = new Calculator();
         Matcher m = Pattern.compile(pattern).matcher(matcher);
         Integer result = 0;
         if (m.find()) {
             switch (m.group().charAt(0)) {
                 case '+':
-
-                    result = a + b;
+                    result = calculator.sum(a, b);
                     break;
                 case '-':
                     result = a - b;

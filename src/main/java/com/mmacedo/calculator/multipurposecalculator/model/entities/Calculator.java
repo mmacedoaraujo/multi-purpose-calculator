@@ -39,4 +39,7 @@ public class Calculator {
         this.savedNumber = savedNumber;
     }
 
+    public Integer sum(Integer a, Integer b) {
+        return a + b;
+    }
 }
