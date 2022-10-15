@@ -1,12 +1,10 @@
 package com.mmacedo.calculator.multipurposecalculator;
 
-import com.mmacedo.calculator.multipurposecalculator.model.entities.Calculator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,8 +16,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MainWindowController implements Initializable {
     @FXML
@@ -42,7 +38,7 @@ public class MainWindowController implements Initializable {
     private ImageView btnMinimize;
     @FXML
     private ImageView btnClose;
-    private String arithmeticExpression = "";
+    private String numbers = "";
     private String operator = "";
     private double x, y;
 
@@ -62,14 +58,11 @@ public class MainWindowController implements Initializable {
 
     @FXML
     void eraseAll(MouseEvent event) {
-        textField.deleteText(0, arithmeticExpression.length());
-        arithmeticExpression = textField.getText();
+        textField.deleteText(0, numbers.length());
+        numbers = textField.getText();
+        operator = textField.getText();
 
-        if(!textField.equals("")) {
-            eraseAllImgView.setOpacity(100);
-        } else {
-            eraseAllImgView.setOpacity(10);
-        }
+
     }
 
     @FXML
@@ -86,21 +79,25 @@ public class MainWindowController implements Initializable {
     @FXML
     void onBtnClearClicked(ActionEvent event) {
         textField.clear();
-        arithmeticExpression = "";
+        numbers = "";
     }
 
     @FXML
     void onNumberClicked(MouseEvent event) {
-        arithmeticExpression += ((Button) event.getSource()).getText();
-        textField.setText(arithmeticExpression);
+        numbers += ((Button) event.getSource()).getText();
+        if (!operator.isEmpty()) {
+            textField.setText(numbers + operator);
+        } else {
+            textField.setText(numbers);
+        }
+
+
     }
 
     @FXML
     void onOperatorClicked(MouseEvent event) {
-        if (arithmeticExpression.contains("\\d")) {
-            operator = ((Button) event.getSource()).getText();
-            textField.setText(arithmeticExpression + operator);
-        }
+        operator = ((Button) event.getSource()).getText();
+        textField.setText(numbers + operator);
     }
 
     public String eraseChar(String s) {
@@ -110,6 +107,5 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
