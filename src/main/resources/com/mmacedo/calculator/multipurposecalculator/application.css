@@ -11,7 +11,6 @@
 .button{
     -fx-border-color: transparent, rgb(255, 255, 255);
     -fx-border-width: 0;
-    -fx-background-radius: 0;
     -fx-background-color: transparent;
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 20px; /* 12 */
@@ -39,6 +38,15 @@
         -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
         -fx-font-size: 20px; /* 12 */
         -fx-text-fill: #c2c2c2;
+ }
+
+ #textField {
+            -fx-border-width: 0;
+            -fx-border-radius: 30px;
+            -fx-background-color: rgba(0, 0, 0, 0);
+            -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+            -fx-font-size: 20px; /* 12 */
+            -fx-text-fill: #ffffff;
  }
 
  #lblResult {

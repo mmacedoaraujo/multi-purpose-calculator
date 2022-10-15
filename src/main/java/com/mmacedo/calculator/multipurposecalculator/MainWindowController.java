@@ -4,8 +4,10 @@ import com.mmacedo.calculator.multipurposecalculator.model.entities.Calculator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,40 +15,35 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.net.URL;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MainWindowController {
+public class MainWindowController implements Initializable {
     @FXML
     private BorderPane borderPane;
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label lblResult;
-    @FXML
-    private Label lblSaved;
+    private TextField textField;
     @FXML
     private Button standardCalculatorButton;
-
     @FXML
     private Button bmiCalculatorButton;
     @FXML
     private Button btnEqual;
     @FXML
     private Button btnClear;
-
+    @FXML
+    private ImageView eraseAllImgView;
     @FXML
     private ImageView btnMinimize;
-
     @FXML
     private ImageView btnClose;
-    private String firstNumber = "";
-    private String currentNumber = "";
-    private String savedNumber = "";
-    private String operationsHistory = "";
+    private String arithmeticExpression = "";
+    private String operator = "";
     private double x, y;
 
     public void init(Stage stage) {
@@ -64,6 +61,18 @@ public class MainWindowController {
     }
 
     @FXML
+    void eraseAll(MouseEvent event) {
+        textField.deleteText(0, arithmeticExpression.length());
+        arithmeticExpression = textField.getText();
+
+        if(!textField.equals("")) {
+            eraseAllImgView.setOpacity(100);
+        } else {
+            eraseAllImgView.setOpacity(10);
+        }
+    }
+
+    @FXML
     protected void onStandardCalculatorButtonButtonClick() throws IOException {
         borderPane.setCenter(rootPane);
     }
@@ -76,81 +85,31 @@ public class MainWindowController {
 
     @FXML
     void onBtnClearClicked(ActionEvent event) {
-        savedNumber = "";
-        currentNumber = "";
-        lblResult.setText("");
-        lblSaved.setText("");
+        textField.clear();
+        arithmeticExpression = "";
     }
 
     @FXML
     void onNumberClicked(MouseEvent event) {
-        firstNumber = ((Button) event.getSource()).getText();
-        addNumber(firstNumber);
+        arithmeticExpression += ((Button) event.getSource()).getText();
+        textField.setText(arithmeticExpression);
     }
 
     @FXML
-    void onSymbolClicked(MouseEvent event) {
-        currentNumber += String.format("%s", ((Button) event.getSource()).getText());
-        Pattern pattern = Pattern.compile("(([\\-]{0,1}\\d+[\\+\\-\\/\\*]{0,1}){1}([\\-]{0,1}\\d{0}[\\+\\-\\/\\*]{1}\\d+){1}){1}");
-        Matcher matcher = pattern.matcher(currentNumber);
-        Boolean matchFound = matcher.find();
-
-        if (matchFound) {
-            lblResult.setText("");
-            lblResult.setText(currentNumber);
+    void onOperatorClicked(MouseEvent event) {
+        if (arithmeticExpression.contains("\\d")) {
+            operator = ((Button) event.getSource()).getText();
+            textField.setText(arithmeticExpression + operator);
         }
-
     }
 
-    @FXML
-    void onEqualClicked(MouseEvent event) {
-        lblSaved.setText(currentNumber.substring(0, savedNumber.length()) + currentNumber + "=");
-        Integer savedNumberConverted = Integer.parseInt(savedNumber.replaceAll("\\D$", ""));
-        Integer currentNumberConverted = Integer.parseInt(currentNumber.replaceAll("\\D$", ""));
-
-        Integer result = adaptativeEqualBtnOperator("[\\+\\-\\/\\*]", savedNumber, savedNumberConverted, currentNumberConverted);
-        updateDataMethod(result);
-
+    public String eraseChar(String s) {
+        return s.replaceAll(".$", "");
     }
 
-    public void updateLabelResult() {
-        lblResult.setText(currentNumber);
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
-
-    public void addNumber(String number) {
-        currentNumber += number;
-        updateLabelResult();
-    }
-
-    public Integer adaptativeEqualBtnOperator(String pattern, String matcher, Integer a, Integer b) {
-        Calculator calculator = new Calculator();
-        Matcher m = Pattern.compile(pattern).matcher(matcher);
-        Integer result = 0;
-        if (m.find()) {
-            switch (m.group().charAt(0)) {
-                case '+':
-                    result = calculator.sum(a, b);
-                    break;
-                case '-':
-                    result = a - b;
-                    break;
-                case '*':
-                    result = a * b;
-                    break;
-                case '/':
-                    result = a / b;
-                    break;
-            }
-
-        }
-        return result;
-    }
-
-    public void updateDataMethod(Integer result) {
-        lblResult.setText(String.format("%d", result));
-        currentNumber = String.valueOf(result);
-        savedNumber = "";
-        lblSaved.setText("");
-    }
-
 }

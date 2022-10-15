@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -56,35 +57,37 @@
          <children>
             <FlowPane layoutY="178.0" prefHeight="364.0" prefWidth="90.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="+" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="-" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="*" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSymbolClicked" prefHeight="90.0" prefWidth="90.0" text="/" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onOperatorClicked" prefHeight="90.0" prefWidth="90.0" text="+" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onOperatorClicked" prefHeight="90.0" prefWidth="90.0" text="-" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onOperatorClicked" prefHeight="90.0" prefWidth="90.0" text="*" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onOperatorClicked" prefHeight="90.0" prefWidth="90.0" text="/" />
                </children>
             </FlowPane>
             <FlowPane prefHeight="392.0" prefWidth="275.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="150.0">
                <children>
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="7" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="8" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="7" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="8" />
                   <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="9" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="4" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="5" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="6" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="1" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="2" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="3" />
-                  <Button id="calculatorButtons" fx:id="btnClear" mnemonicParsing="false" onAction="#onBtnClearClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="C" />
-                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="0" textFill="WHITE" />
-                  <Button id="calculatorButtons" fx:id="btnEqual" mnemonicParsing="false" onMouseClicked="#onEqualClicked" prefHeight="90.0" prefWidth="90.0" stylesheets="@application.css" text="=" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="4" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="5" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="6" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="1" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="2" />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="3" />
+                  <Button id="calculatorButtons" fx:id="btnClear" mnemonicParsing="false" onAction="#onBtnClearClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="." />
+                  <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="0" textFill="WHITE" />
+                  <Button id="calculatorButtons" fx:id="btnEqual" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="=" />
                </children>
             </FlowPane>
-            <Label id="lblResult" fx:id="lblResult" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="320.0" layoutY="126.0" textFill="WHITE" translateX="-80.0" translateY="-10.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" />
-            <Label id="lblResult" fx:id="lblSaved" alignment="CENTER_RIGHT" layoutX="330.0" layoutY="136.0" prefHeight="24.0" prefWidth="304.0" textFill="WHITE" translateX="-80.0" translateY="-100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" />
-            <ImageView fx:id="eraseImgView" fitHeight="21.0" fitWidth="27.0" layoutX="388.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" translateX="-45.0" translateY="-12.0" AnchorPane.rightAnchor="0.0">
+            <ImageView fx:id="eraseAllImgView" fitHeight="20.0" fitWidth="16.0" layoutX="357.0" layoutY="60.0" onMouseClicked="#eraseAll" opacity="0.37" pickOnBounds="true" preserveRatio="true" translateX="-20.0" translateY="-50.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="60.0">
                <image>
-                  <Image url="@../../../../images/back.png" />
+                  <Image url="@../../../../images/bin.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
+            <TextField id="textField" fx:id="textField" alignment="CENTER_RIGHT" layoutX="30.0" layoutY="18.0" prefHeight="127.0" prefWidth="290.0" stylesheets="@application.css" text="90+90" />
          </children>
       </AnchorPane>
    </center>
