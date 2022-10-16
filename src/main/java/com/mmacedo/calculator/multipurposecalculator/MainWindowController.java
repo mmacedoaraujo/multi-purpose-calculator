@@ -16,8 +16,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class MainWindowController implements Initializable {
+public class MainWindowController {
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -38,7 +40,8 @@ public class MainWindowController implements Initializable {
     private ImageView btnMinimize;
     @FXML
     private ImageView btnClose;
-    private String numbers = "";
+    private String rightSideNumbers = "";
+    private String leftSideNumbers = "";
     private String operator = "";
     private double x, y;
 
@@ -56,14 +59,6 @@ public class MainWindowController implements Initializable {
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
     }
 
-    @FXML
-    void eraseAll(MouseEvent event) {
-        textField.deleteText(0, numbers.length());
-        numbers = textField.getText();
-        operator = textField.getText();
-
-
-    }
 
     @FXML
     protected void onStandardCalculatorButtonButtonClick() throws IOException {
@@ -77,35 +72,47 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    void onBtnClearClicked(ActionEvent event) {
-        textField.clear();
-        numbers = "";
+    void eraseAll(MouseEvent event) {
+        textField.deleteText(0, textField.getLength());
+        rightSideNumbers = "";
+        leftSideNumbers = "";
+        operator = "";
     }
 
     @FXML
     void onNumberClicked(MouseEvent event) {
-        numbers += ((Button) event.getSource()).getText();
-        if (!operator.isEmpty()) {
-            textField.setText(numbers + operator);
-        } else {
-            textField.setText(numbers);
-        }
+        if (regexMatcher("([\\d]{1,}[\\+\\-\\/\\*]{1})", textField.getText())) {
+            leftSideNumbers += ((Button) event.getSource()).getText();
+            textField.setText(rightSideNumbers + operator + leftSideNumbers);
 
+        }
+        if (!regexMatcher("[\\+\\-\\/\\*]{1}", textField.getText())) {
+            rightSideNumbers += ((Button) event.getSource()).getText();
+            textField.setText(rightSideNumbers + operator);
+        }
 
     }
 
     @FXML
     void onOperatorClicked(MouseEvent event) {
-        operator = ((Button) event.getSource()).getText();
-        textField.setText(numbers + operator);
+        if (regexMatcher("[\\d]", textField.getText())) {
+            operator = ((Button) event.getSource()).getText();
+            textField.setText(rightSideNumbers + operator + leftSideNumbers);
+        }
+
+
     }
 
     public String eraseChar(String s) {
         return s.replaceAll(".$", "");
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public Boolean regexMatcher(String pattern, String matcher) {
+        Matcher m = Pattern.compile(pattern).matcher(matcher);
+        if (m.find()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
