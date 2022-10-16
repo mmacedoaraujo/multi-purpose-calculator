@@ -74,7 +74,7 @@
                   <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="1" />
                   <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="2" />
                   <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="3" />
-                  <Button id="calculatorButtons" fx:id="btnClear" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="." />
+                  <Button id="calculatorButtons" fx:id="btnComma" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="." />
                   <Button id="calculatorButtons" mnemonicParsing="false" onMouseClicked="#onNumberClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="0" textFill="WHITE" />
                   <Button id="calculatorButtons" fx:id="btnEqual" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" style="-fx-border-radius: 12px;" stylesheets="@application.css" text="=" />
                </children>

@@ -33,7 +33,7 @@ public class MainWindowController {
     @FXML
     private Button btnEqual;
     @FXML
-    private Button btnClear;
+    private Button btnComma;
     @FXML
     private ImageView eraseAllImgView;
     @FXML
@@ -73,22 +73,26 @@ public class MainWindowController {
 
     @FXML
     void eraseAll(MouseEvent event) {
-        textField.deleteText(0, textField.getLength());
-        rightSideNumbers = "";
-        leftSideNumbers = "";
-        operator = "";
+        clearAllFields();
     }
 
     @FXML
     void onNumberClicked(MouseEvent event) {
-        if (regexMatcher("([\\d]{1,}[\\+\\-\\/\\*]{1})", textField.getText())) {
+        if (regexMatcher("(([\\d]{1,}|[\\d]+.[\\d]+)[\\s]{1}[\\+\\-\\/\\*]{1})", textField.getText())) {
             leftSideNumbers += ((Button) event.getSource()).getText();
-            textField.setText(rightSideNumbers + operator + leftSideNumbers);
+            textField.setText(rightSideNumbers + " " + operator + " " + leftSideNumbers);
 
         }
-        if (!regexMatcher("[\\+\\-\\/\\*]{1}", textField.getText())) {
+        if (!regexMatcher("[\\+\\-\\/\\*]{1}|[\\.]{2}", textField.getText())) {
             rightSideNumbers += ((Button) event.getSource()).getText();
-            textField.setText(rightSideNumbers + operator);
+            textField.setText(rightSideNumbers + " " + operator);
+        }
+
+        if (regexMatcher("^[\\.]+", textField.getText())) {
+            textField.deleteText(0, textField.getLength());
+            rightSideNumbers = "";
+            leftSideNumbers = "";
+            operator = "";
         }
 
     }
@@ -97,10 +101,8 @@ public class MainWindowController {
     void onOperatorClicked(MouseEvent event) {
         if (regexMatcher("[\\d]", textField.getText())) {
             operator = ((Button) event.getSource()).getText();
-            textField.setText(rightSideNumbers + operator + leftSideNumbers);
+            textField.setText(rightSideNumbers + " " + operator + " " + leftSideNumbers);
         }
-
-
     }
 
     public String eraseChar(String s) {
@@ -114,5 +116,12 @@ public class MainWindowController {
         } else {
             return false;
         }
+    }
+
+    public void clearAllFields() {
+        textField.deleteText(0, textField.getLength());
+        rightSideNumbers = "";
+        leftSideNumbers = "";
+        operator = "";
     }
 }
